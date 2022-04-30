@@ -6,9 +6,12 @@ class Solution:
 	    ans = []
 	    for each in Query:
 	        sub = str[(each[0]-1):each[1]]
-	        ans.append(len(set(sub)))
-	    
-	    
+	        tmp =[]
+	        for char in sub:
+	            if char not in tmp:
+	                tmp.append(char)
+	        ans.append(len(tmp))
+	                
 	    return ans
 
 #{ 
