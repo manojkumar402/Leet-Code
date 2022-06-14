@@ -19,8 +19,10 @@ class Solution:
         
         st = d[digits[i]]
         for j in range(len(st)):
+            # Made changes so back track
             tmp += st[j]
             self.help(i+1, digits, tmp, ans, d)
+            #back tracking
             tmp = tmp[:-1]
             
         return ans
