@@ -5,18 +5,27 @@ class Solution:
     
     #Function to find equilibrium point in the array.
     def equilibriumPoint(self,A, N):
-        # Your code here
-        prefix = [0]
-        for i in range(1, N):
-            prefix.append(prefix[i-1] + A[i-1])
-        # print(prefix)
-        suffix = [0 for i in range(N)]
-        for i in range(N-2, -1, -1):
-            suffix[i] = suffix[i+1] + A[i+1]
-        # print(suffix)
+        # # Your code here
+        # prefix = [0]
+        # for i in range(1, N):
+        #     prefix.append(prefix[i-1] + A[i-1])
+        # # print(prefix)
+        # suffix = [0 for i in range(N)]
+        # for i in range(N-2, -1, -1):
+        #     suffix[i] = suffix[i+1] + A[i+1]
+        # # print(suffix)
+        # for i in range(N):
+        #     if suffix[i] == prefix[i]:
+        #         return i+1
+        
+        tot_sum = 0
+        for val in A:
+            tot_sum += val
+        curr_sum = 0
         for i in range(N):
-            if suffix[i] == prefix[i]:
+            if curr_sum == (tot_sum - curr_sum - A[i]):
                 return i+1
+            curr_sum += A[i]
         return -1
 
 #{ 
