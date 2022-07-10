@@ -6,6 +6,7 @@
 #         self.right = right
 class Solution:
     def bstToGst(self, root: TreeNode) -> TreeNode:
+        # scammed
         arr = []
         d = {}
         def preorder(root, ans):
