@@ -1,8 +1,6 @@
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
-        # check the sum
-        
-
+        # check the sum if sum is odd then we cannot split the array into two equal subsets
         if sum(nums) % 2 != 0:
             return False
         else:
@@ -17,7 +15,7 @@ class Solution:
             for i in range(1, len(nums)+1):
                 for j in range(1, s+1):
                     if nums[i-1] <= j:
-                        # take it ans leave it
+                        # take it and leave it
                         dp[i][j] = dp[i-1][j-nums[i-1]] or dp[i-1][j]
                     else:
                         dp[i][j] = dp[i-1][j]
