@@ -8,8 +8,8 @@ class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         rab = head
         tor = head
-        while rab and tor and rab.next:
-            rab = rab.next.next
+        while rab and tor and rab.next and rab.next.next:
+            rab = rab.next.next.next
             tor = tor.next
             if rab == tor:
                 return True
