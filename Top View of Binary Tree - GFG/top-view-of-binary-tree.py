@@ -12,34 +12,28 @@ class Solution:
     #Function to return a list of nodes visible from the top view 
     #from left to right in Binary Tree.
     def topView(self,root):
-        ans = []
+        res = []
         if root == None:
-            return ans
-        d = {}
+            return []
         q = deque()
         q.append([root, 0])
+        d = {}
         while len(q) > 0:
-            tmp = q[0]
+            node, lvl = q[0]
             q.popleft()
-            frontNode = tmp[0]
-            hd = tmp[1]
-            # one to one mapping
-            if hd not in d:
-                d[hd] = frontNode.data
-            
-            if frontNode.left:
-                q.append([frontNode.left, hd-1])
-            if frontNode.right:
-                q.append([frontNode.right, hd+1])
-        ans = []  
-        keys = sorted(d)
-        for key in keys:
-            ans.append(d[key])
-        return ans
-        # code here
-
+            if lvl in d:
+                d[lvl].append(node.data)
+            else:
+                d[lvl] = [node.data]
+            if node.left:
+                q.append([node.left, lvl -1])
+            if node.right:
+                q.append([node.right, lvl +1])
+        for key in sorted(d):
+            res.append(d[key][0])
+        return res
 #{ 
-#  Driver Code Starts
+ # Driver Code Starts
 #Initial Template for Python 3
 
 from collections import deque
