@@ -21,16 +21,15 @@ class Solution:
         while len(q) > 0:
             node, lvl = q[0]
             q.popleft()
-            if lvl in d:
-                d[lvl].append(node.data)
-            else:
-                d[lvl] = [node.data]
+            if lvl not in d:
+                d[lvl] = node.data
+                
             if node.left:
                 q.append([node.left, lvl -1])
             if node.right:
                 q.append([node.right, lvl +1])
         for key in sorted(d):
-            res.append(d[key][0])
+            res.append(d[key])
         return res
 #{ 
  # Driver Code Starts
